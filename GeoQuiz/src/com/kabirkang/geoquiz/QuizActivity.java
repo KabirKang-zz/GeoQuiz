@@ -82,8 +82,7 @@ public class QuizActivity extends ActionBarActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                updateQuestion();
+                showNextQuestion();
             }
         });
         mPrevButton = (Button)findViewById(R.id.prev_button);
@@ -102,8 +101,24 @@ public class QuizActivity extends ActionBarActivity {
             updateQuestion();
         	}
         });
+        
+        
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showNextQuestion();
+			}
+		});
+        
         updateQuestion();
     
+    }
+    
+    private void showNextQuestion()
+    {
+    	mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        updateQuestion();
     }
 
 
